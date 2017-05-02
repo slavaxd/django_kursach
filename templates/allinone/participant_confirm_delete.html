@@ -1,4 +1,9 @@
-<form method="post">{% csrf_token %}
-    Are you sure you want to delete "{{ object }}" ?
-    <input type="submit" value="Submit" />
-</form>
+{% extends "base_delete_confirm.html" %}
+{% block content %}
+    <form align="center" method="post">{% csrf_token %}
+        Are you sure you want to delete "{{ object }}" ?
+        <br><br><button type="submit" class="btn btn-danger">Видалити</button>
+    </form>
+    {% endblock %}
+
+
