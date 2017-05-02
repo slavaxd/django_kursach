@@ -1,11 +1,32 @@
-<h1>participants</h1>
-<ul>
-    {% for participant in object_list %}
-    <li>{{ participant.name }}  :  
-    <a href="{% url "participant_edit" participant.id %}">Edit</a>
-    <a href="{% url "participant_delete" participant.id %}">delete</a>
-    </li>
-    {% endfor %}
-</ul>
+{% extends "base_table.html" %}
+{% block content %}
+<a style="float:left" href="{% url "participant_new" %}"><button type="button" class="btn btn-success">Додати</button></a>
+<h1  align="center">Учасники</h1>
 
-<a href="{% url "participant_new" %}">New</a>
+<table class="table table-hover table-striped">
+    <tr>
+        <th>П.І.Б.</th>
+        <th>Вік</th>
+        <th>Дата народження</th>
+        <th>Місце народження</th>
+        <th>Назва команди</th>
+        <th>Тип велосипеду</th>
+        <th></th>
+        <th></th>
+    </tr>
+    {% for participant in object_list %}
+    <tr>
+        <td>{{ participant.name }}</td>
+        <td>{{ participant.age }}</td>
+            <td>{{ participant.birthday }}</td>
+            <td>{{ participant.birthplace }}</td>
+            <td>{{ participant.team.name }}</td>
+            <td>{{ participant.bike.kind_of_bike }}</td>
+        <td>
+            <a href="{% url "participant_edit" participant.id %}"><button type="button" class="btn btn-primary btn-sm">Редагувати</button></a>
+        </td>
+        <td><a href="{% url "participant_delete" participant.id %}"><button type="button" class="btn btn-danger btn-sm">Видалити</button></a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
