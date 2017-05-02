@@ -1,0 +1,11 @@
+<h1>organizators</h1>
+<ul>
+    {% for organizator in object_list %}
+    <li>{{ organizator.name }}  :  
+    <a href="{% url "organizator_edit" organizator.id %}">edit</a>
+    <a href="{% url "organizator_delete" organizator.id %}">delete</a>
+    </li>
+    {% endfor %}
+</ul>
+
+<a href="{% url "organizator_new" %}">New</a>

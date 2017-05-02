@@ -1,9 +1,15 @@
 <h1>bikes</h1>
 <ul>
-    {% for bike in object_list %}
-    <li>{{ bike.kind_of_bike }}  :  
-	    <a href="{% url "bike_edit" bike.id %}">Edit</a>
-	    <a href="{% url "bike_delete" bike.id %}">Delete</a>
+    {% for obj in object_list %}
+    <li>{{ obj.kind_of_bike}}
+            {{ obj.made_by }}
+            {{ obj.weight }}
+            {{ obj.material }}
+            {{ obj.color }}
+            {{ obj.country }}
+            {{ obj.price }}:  
+	    <a href="{% url "bike_edit" obj.id %}">Edit</a>
+	    <a href="{% url "bike_delete" obj.id %}">Delete</a>
     </li>
     {% endfor %}
 </ul>
