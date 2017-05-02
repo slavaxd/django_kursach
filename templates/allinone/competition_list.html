@@ -1,0 +1,11 @@
+<h1>competitions</h1>
+<ul>
+    {% for competition in object_list %}
+    <li>{{ competition.name }}  :  
+    <a href="{% url "competition_edit" competition.id %}">{{ competition.ip }}</a>
+    <a href="{% url "competition_delete" competition.id %}">delete</a>
+    </li>
+    {% endfor %}
+</ul>
+
+<a href="{% url "competition_new" %}">New</a>

@@ -1,0 +1,11 @@
+<h1>coachs</h1>
+<ul>
+    {% for coach in object_list %}
+    <li>{{ coach.name }}  :  
+    <a href="{% url "coach_edit" coach.id %}">edit</a>
+    <a href="{% url "coach_delete" coach.id %}">delete</a>
+    </li>
+    {% endfor %}
+</ul>
+
+<a href="{% url "coach_new" %}">New</a>

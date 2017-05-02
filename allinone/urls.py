@@ -70,4 +70,24 @@ urlpatterns = [
 		views.ParticipantDelete.as_view(), 
 		name='participant_delete'
 	),
+
+
+	url(r'^coach/$', views.CoachList.as_view(), name='coach_list'),
+	url(r'^coach/new$', views.CoachCreate.as_view(), name='coach_new'),
+	url(r'^coach/edit/(?P<pk>\d+)$', views.CoachUpdate.as_view(), name='coach_edit'),
+	url(r'^coach/delete/(?P<pk>\d+)$', views.CoachDelete.as_view(), name='coach_delete'),
+
+
+	url(r'^organizator/$', views.OrganizatorList.as_view(), name='organizator_list'),
+	url(r'^organizator/new$', views.OrganizatorCreate.as_view(), name='organizator_new'),
+	url(r'^organizator/edit/(?P<pk>\d+)$', views.OrganizatorUpdate.as_view(), name='organizator_edit'),
+	url(r'^organizator/delete/(?P<pk>\d+)$', views.OrganizatorDelete.as_view(), name='organizator_delete'),
+
+	url(r'^$', views.CompetitionList.as_view(), name='competition_list'),
+	url(r'^new$', views.CompetitionCreate.as_view(), name='competition_new'),
+	url(r'^edit/(?P<pk>\d+)$', views.CompetitionUpdate.as_view(), name='competition_edit'),
+	url(r'^delete/(?P<pk>\d+)$', views.CompetitionDelete.as_view(), name='competition_delete'),
+
+
+
 ]
