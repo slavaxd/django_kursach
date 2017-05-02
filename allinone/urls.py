@@ -4,6 +4,8 @@ from django.views.generic import TemplateView
 from . import views
 
 urlpatterns = [
+	url(r'^$', TemplateView.as_view(template_name="allinone/index.html"), name='edit_index'),
+
 	url(r'^queries/$', TemplateView.as_view(template_name="allinone/queries_index.html"), name='queries_index'),
 
 	url(r'^queries/1$', views.first_query, name='first_query'),

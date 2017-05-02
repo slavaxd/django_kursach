@@ -8,11 +8,14 @@
         body {
             height: 500px;
             margin: 0;
+
             background-repeat: no-repeat;
         }
+
         a {
             text-decoration: none
         }
+
         .flex-container {
             display: flex;
             align-content: flex-start;
@@ -21,6 +24,7 @@
             background-image: url(../static/img/back.jpg);
             background-position: 50% 25%;
         }
+
         button {
             background-color: white;
             color: #008CBA;
@@ -30,24 +34,29 @@
             font-family: courier new;
             font-weight: bolder;
         }
+
         button:hover {
             background-color: #008CBA;
             color: white;
             cursor: pointer;
         }
+
         /* table*/
         table {
             border-collapse: collapse;
             width: 100%;
         }
+
         th,
         td {
             text-align: left;
             padding: 8px;
         }
+
         tr:nth-child(even) {
             background-color: #f2f2f2
         }
+
         th {
             background-color: #4CAF50;
             color: white;
@@ -60,24 +69,21 @@
     <div class="flex-container"></div>
     <table>
         <tr>
-            <th>Ім'я</th>
+            <th>П.І.Б.</th>
+            <th>Місце народження</th>
             <th>Вік</th>
-            <th>Дата народження</th>
-            <th>Назва команди</th>
         </tr>
         {% for obj in res %}
         <tr>
             <td>{{ obj.name }}</td>
+            <td>{{ obj.birthplace}}</td>
             <td>{{ obj.age }}</td>
-            <td>{{ obj.birthday }}</td>
-            <td>{{ obj.team.name }}</td>
+
         </tr>
         {% endfor %}
 
 
     </table>
-    <a href="/queries/1"><button class="button">Змінити параметри запиту</button></a>
-    <button>Головна сторінка</button>
 </body>
 
 </html>
