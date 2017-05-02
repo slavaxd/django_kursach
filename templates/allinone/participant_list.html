@@ -1,0 +1,11 @@
+<h1>participants</h1>
+<ul>
+    {% for participant in object_list %}
+    <li>{{ participant.name }}  :  
+    <a href="{% url "participant_edit" participant.id %}">Edit</a>
+    <a href="{% url "participant_delete" participant.id %}">delete</a>
+    </li>
+    {% endfor %}
+</ul>
+
+<a href="{% url "participant_new" %}">New</a>
