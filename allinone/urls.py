@@ -10,6 +10,12 @@ urlpatterns = [
 
 	url(r'^queries/1$', views.first_query, name='first_query'),
 	url(r'^queries/2$', views.second_query, name='second_query'),
+	url(r'^queries/3$', views.third_query, name='third_query'),
+	url(r'^queries/4$', views.fourth_query, name='fourth_query'),
+	url(r'^queries/5$', views.fifth_query, name='fifth_query'),
+	url(r'^queries/6$', views.sixth_query, name='sixth_query'),
+	url(r'^queries/7$', views.seventh_query, name='seventh_query'),
+	url(r'^queries/8$', views.eighth_query, name='eighth_query'),
 
 	url(r'^edit/$', TemplateView.as_view(template_name="allinone/edit_index.html"), name='edit_index'),
 
