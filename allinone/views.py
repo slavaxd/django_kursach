@@ -17,8 +17,8 @@ def first_query(request):
 			p1 = int(form.cleaned_data['p1'])
 			p2 = int(form.cleaned_data['p2'])
 			# comp = Competition.objects.get(pk=p2)
-			res = Participant.objects.raw('SELECT "allinone_participant"."id", "allinone_participant"."name", "allinone_participant"."age", "allinone_participant"."birthday", "allinone_participant"."birthplace", "allinone_participant"."team_id", "allinone_participant"."bike_id" FROM "allinone_participant" INNER JOIN "allinone_competition_participants" ON ("allinone_participant"."id" = "allinone_competition_participants"."participant_id") WHERE ("allinone_participant"."age" <= ' + p1 + 'AND "allinone_competition_participants"."competition_id" = ' + p2 + ')')
-			# Participant.objects.filter(age__lte=int(p1)).filter(competition__id=p2)
+			# res = Participant.objects.raw('SELECT "allinone_participant"."id", "allinone_participant"."name", "allinone_participant"."age", "allinone_participant"."birthday", "allinone_participant"."birthplace", "allinone_participant"."team_id", "allinone_participant"."bike_id" FROM "allinone_participant" INNER JOIN "allinone_competition_participants" ON ("allinone_participant"."id" = "allinone_competition_participants"."participant_id") WHERE ("allinone_participant"."age" <= ' + p1 + 'AND "allinone_competition_participants"."competition_id" = ' + p2 + ')')
+			res = Participant.objects.filter(age__lte=int(p1)).filter(competition__id=p2)
 
 			# process the data in form.cleaned_data as required
 			# return HttpResponseRedirect('/yeass/')
@@ -81,7 +81,7 @@ def fourth_query(request):
 			p1 = form.cleaned_data['p1']
 			p2 = form.cleaned_data['p2']
 			# comp = Competition.objects.get(pk=p2)
-			res = Organizator.objects.filter(name=p1).filter(participant_coudnt__gte=p2)
+			res = Organizator.objects.filter(name=p1).filter(name=p1).filter(competition_country=p2)
 
 			# process the data in form.cleaned_data as required
 			# return HttpResponseRedirect('/yeass/')
@@ -102,7 +102,7 @@ def fifth_query(request):
 			p1 = form.cleaned_data['p1']
 			p2 = int(form.cleaned_data['p2'])
 			# comp = Competition.objects.get(pk=p2)
-			res = Team.objects.filter(name__startswith=p1).filter(participant_count__gte=p2)
+			res = Bike.objects.filter(kind_of_bike=p1).filter(price__lte=p2)
 
 			# process the data in form.cleaned_data as required
 			# return HttpResponseRedirect('/yeass/')
@@ -120,10 +120,10 @@ def sixth_query(request):
 		form = SixthQueryForm(request.POST)
 		# check whether it's valid:
 		if form.is_valid():
-			p1 = form.cleaned_data['p1']
+			p1 = int(form.cleaned_data['p1'])
 			p2 = int(form.cleaned_data['p2'])
 			# comp = Competition.objects.get(pk=p2)
-			res = Team.objects.filter(name__startswith=p1).filter(participant_count__gte=p2)
+			res = Coach.objects.filter(team__id=p1).filter(age__gte=p2)
 
 			# process the data in form.cleaned_data as required
 			# return HttpResponseRedirect('/yeass/')
@@ -141,10 +141,10 @@ def seventh_query(request):
 		form = SeventhQueryForm(request.POST)
 		# check whether it's valid:
 		if form.is_valid():
-			p1 = form.cleaned_data['p1']
+			p1 = int(form.cleaned_data['p1'])
 			p2 = int(form.cleaned_data['p2'])
 			# comp = Competition.objects.get(pk=p2)
-			res = Team.objects.filter(name__startswith=p1).filter(participant_count__gte=p2)
+			res = Coach.objects.filter(team_id=p1).filter(participant_count__gte=p2)
 
 			# process the data in form.cleaned_data as required
 			# return HttpResponseRedirect('/yeass/')
@@ -163,9 +163,9 @@ def eighth_query(request):
 		# check whether it's valid:
 		if form.is_valid():
 			p1 = form.cleaned_data['p1']
-			p2 = int(form.cleaned_data['p2'])
+			p2 = form.cleaned_data['p2']
 			# comp = Competition.objects.get(pk=p2)
-			res = Team.objects.filter(name__startswith=p1).filter(participant_count__gte=p2)
+			res = Bike.objects.filter(price=p1).filter(material=p2)
 
 			# process the data in form.cleaned_data as required
 			# return HttpResponseRedirect('/yeass/')
