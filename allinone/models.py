@@ -30,7 +30,7 @@ class Participant(Model):
 	age = IntegerField(default=0)
 	birthday = DateTimeField()
 	birthplace = CharField(max_length=255)
-	team = OneToOneField(Team)
+	team = ForeignKey(Team, on_delete=CASCADE)
 	bike = OneToOneField(Bike)
 	# competitions = Set('Competition')
 	def __unicode__(self):
