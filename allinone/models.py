@@ -21,7 +21,8 @@ class Bike(Model):
 	country = CharField(max_length=255)
 	price = IntegerField(default=0)
 	# participant = OneToOneField(Participant)
-
+	def __unicode__(self):
+		return "{0} {1}".format(self.kind_of_bike, self.material)
 
 class Participant(Model):
 	# id = PrimaryKey(int, auto=True)

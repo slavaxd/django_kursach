@@ -27,7 +27,7 @@ def first_query(request):
 	else:
 		form = FirstQueryForm()
 
-	return render(request, 'allinone/queries/1.html', {'form': form})
+	return render(request, 'allinone/queries/common.html', {'form': form})
 
 def second_query(request):
 	# if this is a POST request we need to process the form data
@@ -48,7 +48,135 @@ def second_query(request):
 	else:
 		form = SecondQueryForm()
 
-	return render(request, 'allinone/queries/1.html', {'form': form})
+	return render(request, 'allinone/queries/common.html', {'form': form})
+
+def third_query(request):
+	# if this is a POST request we need to process the form data
+	if request.method == 'POST':
+		# create a form instance and populate it with data from the request:
+		form = ThirdQueryForm(request.POST)
+		# check whether it's valid:
+		if form.is_valid():
+			p1 = form.cleaned_data['p1']
+			p2 = int(form.cleaned_data['p2'])
+			# comp = Competition.objects.get(pk=p2)
+			res = Competition.objects.filter(name=p1).filter(participant_count__lte=p2)
+
+			# process the data in form.cleaned_data as required
+			# return HttpResponseRedirect('/yeass/')
+			return render(request, 'allinone/queryres/3.html', {'res': res})
+	# if a GET (or any other method) we'll create a blank form
+	else:
+		form = ThirdQueryForm()
+
+	return render(request, 'allinone/queries/common.html', {'form': form})
+
+def fourth_query(request):
+	# if this is a POST request we need to process the form data
+	if request.method == 'POST':
+		# create a form instance and populate it with data from the request:
+		form = FourthQueryForm(request.POST)
+		# check whether it's valid:
+		if form.is_valid():
+			p1 = form.cleaned_data['p1']
+			p2 = form.cleaned_data['p2']
+			# comp = Competition.objects.get(pk=p2)
+			res = Organizator.objects.filter(name=p1).filter(participant_coudnt__gte=p2)
+
+			# process the data in form.cleaned_data as required
+			# return HttpResponseRedirect('/yeass/')
+			return render(request, 'allinone/queryres/4.html', {'res': res})
+	# if a GET (or any other method) we'll create a blank form
+	else:
+		form = FourthQueryForm()
+
+	return render(request, 'allinone/queries/common.html', {'form': form})
+
+def fifth_query(request):
+	# if this is a POST request we need to process the form data
+	if request.method == 'POST':
+		# create a form instance and populate it with data from the request:
+		form = FifthQueryForm(request.POST)
+		# check whether it's valid:
+		if form.is_valid():
+			p1 = form.cleaned_data['p1']
+			p2 = int(form.cleaned_data['p2'])
+			# comp = Competition.objects.get(pk=p2)
+			res = Team.objects.filter(name__startswith=p1).filter(participant_count__gte=p2)
+
+			# process the data in form.cleaned_data as required
+			# return HttpResponseRedirect('/yeass/')
+			return render(request, 'allinone/queryres/5.html', {'res': res})
+	# if a GET (or any other method) we'll create a blank form
+	else:
+		form = FifthQueryForm()
+
+	return render(request, 'allinone/queries/common.html', {'form': form})
+
+def sixth_query(request):
+	# if this is a POST request we need to process the form data
+	if request.method == 'POST':
+		# create a form instance and populate it with data from the request:
+		form = SixthQueryForm(request.POST)
+		# check whether it's valid:
+		if form.is_valid():
+			p1 = form.cleaned_data['p1']
+			p2 = int(form.cleaned_data['p2'])
+			# comp = Competition.objects.get(pk=p2)
+			res = Team.objects.filter(name__startswith=p1).filter(participant_count__gte=p2)
+
+			# process the data in form.cleaned_data as required
+			# return HttpResponseRedirect('/yeass/')
+			return render(request, 'allinone/queryres/6.html', {'res': res})
+	# if a GET (or any other method) we'll create a blank form
+	else:
+		form = SixthQueryForm()
+
+	return render(request, 'allinone/queries/common.html', {'form': form})
+
+def seventh_query(request):
+	# if this is a POST request we need to process the form data
+	if request.method == 'POST':
+		# create a form instance and populate it with data from the request:
+		form = SeventhQueryForm(request.POST)
+		# check whether it's valid:
+		if form.is_valid():
+			p1 = form.cleaned_data['p1']
+			p2 = int(form.cleaned_data['p2'])
+			# comp = Competition.objects.get(pk=p2)
+			res = Team.objects.filter(name__startswith=p1).filter(participant_count__gte=p2)
+
+			# process the data in form.cleaned_data as required
+			# return HttpResponseRedirect('/yeass/')
+			return render(request, 'allinone/queryres/7.html', {'res': res})
+	# if a GET (or any other method) we'll create a blank form
+	else:
+		form = SeventhQueryForm()
+
+	return render(request, 'allinone/queries/common.html', {'form': form})
+
+def eighth_query(request):
+	# if this is a POST request we need to process the form data
+	if request.method == 'POST':
+		# create a form instance and populate it with data from the request:
+		form = EighthQueryForm(request.POST)
+		# check whether it's valid:
+		if form.is_valid():
+			p1 = form.cleaned_data['p1']
+			p2 = int(form.cleaned_data['p2'])
+			# comp = Competition.objects.get(pk=p2)
+			res = Team.objects.filter(name__startswith=p1).filter(participant_count__gte=p2)
+
+			# process the data in form.cleaned_data as required
+			# return HttpResponseRedirect('/yeass/')
+			return render(request, 'allinone/queryres/8.html', {'res': res})
+	# if a GET (or any other method) we'll create a blank form
+	else:
+		form = EighthQueryForm()
+
+	return render(request, 'allinone/queries/common.html', {'form': form})
+
+
 class TeamList(ListView):
 	model = Team
 class TeamCreate(CreateView):

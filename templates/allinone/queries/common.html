@@ -1,0 +1,36 @@
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p}}
+    <input type="submit" value="Submit" />
+</form>
+<link href="/static/bootstrap-3.3.2-dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.js"></script> -->
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="/static/js/jquery-3.2.1.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/static/bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
+
+<script>
+	/*$(document).ready(function(){
+
+		$($('p')[i]).wrap('<div class="form-group"></div>')
+		$($('input')[i+1]).addClass("form-control")
+
+})
+*/
+$(document).ready(function(){
+	for (var i = 0; i < 3; i++) {
+		$($('p')[i]).wrap('<div class="form-group"></div>')
+		$($('input')[i]).addClass("form-control")
+	}
+	console.log($('input').get(-1))
+	$($('input').get(-1)).attr('class', 'btn btn-primary')
+	$($('select')[0]).addClass("form-control")
+	//.attr('type', 'button')
+	// let button = $('<button type="submit" class="btn btn-default">Submit</button>')
+	// console.log(button)
+	// $('.form-group').get(-1).after(button)
+	//.addClass('btn btn-default')
+})
+
+</script>
